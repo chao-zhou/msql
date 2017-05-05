@@ -13,8 +13,8 @@ class FixSQLSchema:
             content = self._read_file(f)
             if content is None:
                 return
-            content2 = self.regex.sub("[SCHEMA].", content)
-            if content != content2:
+            content2, count = self.regex.subn("[SCHEMA].", content)
+            if count > 0:
                 self._write_file(content2)
 
     @staticmethod
